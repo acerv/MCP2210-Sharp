@@ -1,1 +1,5 @@
 .vs
+/Application/bin/
+/Application/obj/
+/MCP2210/bin/
+/MCP2210/obj/

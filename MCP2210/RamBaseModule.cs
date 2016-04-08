@@ -50,11 +50,11 @@ namespace MCP2210 {
             ushort active = BitConverter.ToUInt16(packet, 10);
 
             for (int i = 0; i < Constants.NumberOfGeneralPorpouseLines; i++) {
-                int activeBit = (active >> i) & 1;
-                setup.ActiveChipSelectValues[i] = activeBit == 1;
-
-                int idleBit = (idle >> i) & 1;
-                setup.IdleChipSelectValues[i] = idleBit == 1;
+                ushort activeMask = (ushort)Math.Pow(2, i);
+                setup.ActiveChipSelectValues[i] = (active & activeMask) == activeMask;
+                
+                ushort idleMask = (ushort)Math.Pow(2, i);
+                setup.IdleChipSelectValues[i] = (idle & idleMask) == idleMask;
             }
 
             // read the delays
