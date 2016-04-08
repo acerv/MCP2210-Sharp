@@ -174,9 +174,9 @@ namespace MCP2210 {
             settings.VID = Convert.ToInt32(BitConverter.ToUInt16(reply, 12));
             settings.PID = Convert.ToInt32(BitConverter.ToUInt16(reply, 14));
             settings.RequestedCurrent = Convert.ToInt32(reply[30]) * 2; // 2mA Quanta
-            settings.RemoteWakeUpCapable = (reply[29] & 32) == 1;
-            settings.SelfPowered = (reply[29] & 64) == 1;
-            settings.HostPowered = (reply[29] & 128) == 1;
+            settings.RemoteWakeUpCapable = (reply[29] & 32) == 32;
+            settings.SelfPowered = (reply[29] & 64) == 64;
+            settings.HostPowered = (reply[29] & 128) == 128;
 
             return settings;
         }
